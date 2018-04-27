@@ -1,0 +1,186 @@
+# File format: Lines that start with # are ignored
+# Every line will have either a # at the beginning or an expression
+# The lines for equations come in the following format
+# <expression>
+# <answer>
+#
+# If you add features to your expression interpreter, please include
+# a file in this same format to test them when you drop your program
+#
+# Note: Expressions may or may not have white space between tokens.
+# Also, doubles may NOT begin with a period. 0.2 is legal; .2 is not.
+# Also, there will never be a comment between an expression and 
+# its answer.
+#
+#
+# the expression: 3+5 = 8
+3 + 5
+8
+# another expression
+3+5
+8
+# another expression
+2
+2
+# another expression
+2.22
+2.22
+# another expression
+0.22
+0.22
+# addition
+2.0+3.0
+5
+# subtraction
+2.9 - 2
+0.9
+# multiplication
+4 * 2
+8
+# division
+4/2
+2
+#order of operations
+#* over +
+3*4+5
+17
+#* over +
+5+4*3
+17
+#/ over +
+3/4+5
+5.75
+#/ over +
+5+3/4
+5.75
+#* over -
+3*4-5
+7
+#* over -
+5-4*3
+-7
+#/ over -
+3/4-5
+-4.25
+#/ over -
+5-3/4
+4.25
+#proper order of /
+10/5/2
+1
+#proper order of -
+10-5-2
+3
+#proper order of + and -
+5-2+3
+6
+#proper order of + and -
+5+2-3
+4
+#proper order of * and /
+3 * 5 / 2
+7.5
+#proper order of * and /
+5 / 2 * 3
+7.5
+# Long expressions
+3.5 * 2 + 5 + 8 - 24*6
+-124
+# long expressions
+28 * 2 / 8 * 19 - 2 * 4 * 6 * 8
+-251
+########
+#
+# Parenthesis: 
+# Un-comment this section if you have implemented parenthesis
+# This is for a B+ level program
+#####
+(4)
+4
+####
+((((4))))
+4
+####
+(4+5)
+9
+####
+2*(4+5)
+18
+####
+(4+5) * 2
+18
+####
+(4-(5+6)*2)*4+1
+-71
+#####
+#
+#
+# Negative Numbers
+# Un-comment this section if you have implemented negative numbers
+# This is for an A- level program
+#####
+-4
+-4
+#####
+- 4
+-4
+####
+-4+5
+1
+####
+5--4
+9
+####
+5+-4
+1
+######
+- - - - 4
+4
+#####
+5 - - - - 4
+9
+#####
+# Identifiers
+# Un-comment this section if you have implemented identifiers (variables)
+# with simple RHS. This is for an A level program
+#####
+x   =   5
+5
+#####
+y=3
+3
+#####
+4*x
+20
+#####
+x*(15-y)
+60
+#####
+Cat   =   7
+7
+#####
+Dog25   =   25
+25
+#####
+Cat * Dog25
+175
+#####
+pressure=Dog25+7-3
+29
+#####
+pressure+2
+31
+#####
+# Identifiers with expressions
+# Un-comment this section if you have implemented identifiers (variables) 
+# with expressions assigned (RHS).
+#####
+r = 10-5-2
+3
+#####
+t = (r*4) - r*r*r/3 - 1
+2
+#####
+r + 3*t
+9
+

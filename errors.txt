@@ -1,0 +1,9 @@
+#proper order of /
+10/5/2
+1
+#proper order of * and /
+5 / 2 * 3
+7.5
+# long expressions
+28 * 2 / 8 * 19 - 2 * 4 * 6 * 8
+-251
