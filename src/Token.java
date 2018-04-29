@@ -2,9 +2,9 @@ public class Token {
 	public enum types {T_NULL, T_ID, T_DOUBLE, T_EQUALS, T_PLUS, T_MINUS, T_MULT, T_DIV, T_LEFT_PAREN, T_RIGHT_PAREN, T_EXPO, T_MOD} //possible types of Tokens
 	
 	/*	NOTE
-				In terms of order of operations, the exponent and the modulus are considered to be on the same level as 
-				the divide. meaning they will be done first, unless consecutive to a divide function, when they will be 
-				evaluated in the order in which they are written
+				In terms of order of operations, the exponent and the modulus are considered to be on the same level and of higher 
+				importance than multiply and divide. meaning they will be done first, unless consecutive to each other, when 
+				they will be evaluated in the order in which they are written
 	*/
 	
 	types type;		// field for type (above)

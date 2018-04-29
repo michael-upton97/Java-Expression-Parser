@@ -45,19 +45,36 @@ public class Parser {
 	
 	//Like Expression but Comprises of a Factor followed by a RestTerm. the former is assigned as the left node of the latter in RestTerm()
 	private ExpressionNode Term() throws InvalidParsingInputError, MismatchParenthesisError, InvalidIdentifierError {
-		return RestTerm(Factor());
+		return RestTerm(Complex());
 	}
 	
-	// Searches for a highly significant (order of Operations) operation, if found recursively calls itself with the operators node as the leftNode
+	// Searches for a moderately significant (order of Operations) operation, if found recursively calls itself with the operators node as the leftNode
 	// otherwise the initial factor taken in as a parameter is returned back up to Term()
-	private ExpressionNode RestTerm(ExpressionNode factor) throws InvalidParsingInputError, MismatchParenthesisError, InvalidIdentifierError {
+	private ExpressionNode RestTerm(ExpressionNode complex) throws InvalidParsingInputError, MismatchParenthesisError, InvalidIdentifierError {
+		currentToken = Tokens.getNextToken();
+		if(currentToken == null) return complex;
+		switch (currentToken.type){
+			case T_MULT:	return RestTerm(new MulNode(complex, Complex()));
+			
+			case T_DIV:		return RestTerm(new DivNode(complex, Complex()));		
+			
+			default:		Tokens.getPrevToken(); //to compensate for invalid token
+							return complex;
+		}
+	}
+	
+	//Like Expression and Term but Comprises of a Factor followed by a RestComplex. the former is assigned as the left node of the latter in RestComplex()
+	private ExpressionNode Complex() throws InvalidParsingInputError, MismatchParenthesisError, InvalidIdentifierError {
+		return RestComplex(Factor());
+	}
+	
+	// Searches for the highest significant (order of Operations) operation, if found recursively calls itself with the operators node as the leftNode
+	// otherwise the initial factor taken in as a parameter is returned back up to Term()
+	private ExpressionNode RestComplex(ExpressionNode factor) throws InvalidParsingInputError, MismatchParenthesisError, InvalidIdentifierError {
 		currentToken = Tokens.getNextToken();
 		if(currentToken == null) return factor;
 		switch (currentToken.type){
-			case T_MULT:	return RestTerm(new MulNode(factor, Factor()));
-			
-			case T_DIV:		return RestTerm(new DivNode(factor, Factor()));		
-			
+		
 			case T_EXPO:	return RestTerm(new ExponentNode(factor, Factor()));		
 			
 			case T_MOD:		return RestTerm(new ModulusNode(factor, Factor()));		
